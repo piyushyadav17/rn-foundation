@@ -1,0 +1,25 @@
+{
+  "name": "rn-foundation",
+  "version": "0.1.0",
+  "description": "Shared React Native foundation for independent white-label applications",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "peerDependencies": {
+    "react": "19.1.1",
+    "react-native": "0.82.1"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.0",
+    "typescript": "^5.8.3"
+  },
+  "sideEffects": false,
+  "license": "MIT"
+}
