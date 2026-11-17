@@ -2,8 +2,10 @@ import React from 'react';
 import {
   ActivityIndicator,
   Pressable,
+  StyleProp,
   StyleSheet,
   Text,
+  TextStyle,
   ViewStyle,
 } from 'react-native';
 
@@ -12,9 +14,13 @@ export interface AppButtonProps {
   onPress: () => void;
   disabled?: boolean;
   loading?: boolean;
-  backgroundColor?: string;
-  textColor?: string;
-  style?: ViewStyle;
+  backgroundColor: string;
+  textColor: string;
+  height?: number;
+  borderRadius?: number;
+  fontSize?: number;
+  style?: StyleProp<ViewStyle>;
+  textStyle?: StyleProp<TextStyle>;
 }
 
 const AppButton: React.FC<AppButtonProps> = ({
@@ -22,9 +28,13 @@ const AppButton: React.FC<AppButtonProps> = ({
   onPress,
   disabled = false,
   loading = false,
-  backgroundColor = '#001A3D',
-  textColor = '#FFFFFF',
+  backgroundColor,
+  textColor,
+  height = 48,
+  borderRadius = 10,
+  fontSize = 16,
   style,
+  textStyle,
 }) => {
   return (
     <Pressable
@@ -32,14 +42,16 @@ const AppButton: React.FC<AppButtonProps> = ({
       disabled={disabled || loading}
       style={[
         styles.button,
-        {backgroundColor},
+        {backgroundColor, minHeight: height, borderRadius},
         (disabled || loading) && styles.disabled,
         style,
       ]}>
       {loading ? (
         <ActivityIndicator color={textColor} />
       ) : (
-        <Text style={[styles.text, {color: textColor}]}>{title}</Text>
+        <Text style={[styles.text, {color: textColor, fontSize}, textStyle]}>
+          {title}
+        </Text>
       )}
     </Pressable>
   );
@@ -47,14 +59,11 @@ const AppButton: React.FC<AppButtonProps> = ({
 
 const styles = StyleSheet.create({
   button: {
-    minHeight: 48,
     paddingHorizontal: 20,
-    borderRadius: 10,
     alignItems: 'center',
     justifyContent: 'center',
   },
   text: {
-    fontSize: 16,
     fontWeight: '600',
   },
   disabled: {
