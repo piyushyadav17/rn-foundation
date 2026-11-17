@@ -1,5 +1,5 @@
 {
-  "name": "rn-foundation",
+  "name": "@piyushyadav17/rn-foundation",
   "version": "0.1.0",
   "description": "Shared React Native foundation for independent white-label applications",
   "main": "dist/index.js",
@@ -21,5 +21,8 @@
     "typescript": "^5.8.3"
   },
   "sideEffects": false,
-  "license": "MIT"
+  "license": "MIT",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  }
 }
